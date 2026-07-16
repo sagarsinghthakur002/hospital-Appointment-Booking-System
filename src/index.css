@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
-
+.active hr{
+  @apply block
+}
 
 @theme {
   --color-primary: #5f6fff;
