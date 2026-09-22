@@ -5,11 +5,10 @@ import Home from "./pages/Home";
 import Doctors from "./pages/Doctors";
 import Login from "./pages/Login";
 import About from "./pages/About";
-import Contact from "./pages/Contact";
+import Contact from "./pages/contact";
 import MyProfile from "./pages/MyProfile";
 import MyAppointments from "./pages/MyAppointments";
 import Appointments from "./pages/Appointments";
-import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -26,9 +25,6 @@ const App = () => {
         <Route path="/my-appointments/:docId" element={<MyAppointments />} />
         <Route path="/appointments/:docId" element={<Appointments />} />
       </Routes>
-      <Footer className="text-center text-gray-500 text-sm py-4">
-        {/* &copy; {new Date().getFullYear()} Your Company. All rights reserved. */}
-      </Footer>
     </div>
   );
 };
