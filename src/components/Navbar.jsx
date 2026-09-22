@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets.js";
 
 const Navbar = () => {
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
 
     const [showMenu, setShowMenu] = useState(false);
     const [token, setToken] = useState(true);
