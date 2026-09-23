@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import {AppContext} from '../context/AppContext.jsx'
 
@@ -11,12 +11,12 @@ function TopDoctors() {
         <div className='flex flex-col items-center gap-4 my-16 text-gray-900 md:mx-10'>
 
 
-            <h1 className='text-3xl font-medium'>
+            <h1 className='text-3xl font-bold text-gray-800'>
                 Top Doctors to Book
             </h1>
 
 
-            <p className='sm:w-1/3 text-center text-sm'>
+            <p className='sm:w-1/3 text-center text-sm text-gray-600 font-medium'>
                 Simply browse through our extensive list of trusted doctors.
             </p>
 
@@ -49,12 +49,12 @@ function TopDoctors() {
                             </div>
 
 
-                            <p className='text-sm font-medium text-gray-900'>
+                            <p className='text-sm font-semibold text-gray-900'>
                                 {item.name}
                             </p>
 
 
-                            <p className='text-sm text-gray-600 mt-1 '>
+                            <p className='text-sm text-gray-600 mt-1'>
                                 {item.speciality}
                             </p>
 
@@ -67,7 +67,7 @@ function TopDoctors() {
             </div>
 
 
-            <button onClick={() => {navigate('/doctors'); scroll(0,0) }} className='bg-blue-50 text-gray-600 px-12 py-3 rounded-full mt-5 hover:bg-blue-100 transition-all duration-300'>
+            <button onClick={() => { navigate('/doctors'); scrollTo(0, 0) }} className='bg-blue-50 text-gray-700 font-semibold px-12 py-3 rounded-full mt-5 hover:bg-blue-100 transition-all duration-300'>
                 more
             </button>
 

@@ -1,7 +1,5 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { assets } from '../assets/assets.js'
-import appointment_img from '../assets/appointment_img.png'
 
 const Banner = () => {
 

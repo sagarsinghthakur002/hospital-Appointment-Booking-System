@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { AppContext } from '../context/AppContext.jsx'
 
@@ -7,7 +7,6 @@ const Doctors = () => {
   const navigate = useNavigate()
   const { doctors } = useContext(AppContext)
 
-  const [filterDoc, setFilterDoc] = useState([])
   const [showFilter, setShowFilter] = useState(false)
 
   const specialities = [
@@ -19,21 +18,13 @@ const Doctors = () => {
     'Gastroenterologist',
   ]
 
-  const applyFilter = () => {
-    if (speciality) {
-      setFilterDoc(doctors.filter((doc) => doc.speciality === speciality))
-    } else {
-      setFilterDoc(doctors)
-    }
-  }
-
-  useEffect(() => {
-    applyFilter()
+  const filterDoc = useMemo(() => {
+    return speciality ? doctors.filter((doc) => doc.speciality === speciality) : doctors
   }, [doctors, speciality])
 
   return (
     <div>
-      <p className='text-gray-600'>Browse through the doctors specialist.</p>
+      <p className='text-gray-700 font-medium'>Browse through the doctors specialist.</p>
 
       <div className='flex flex-col sm:flex-row items-start gap-5 mt-5'>
 
@@ -44,7 +35,7 @@ const Doctors = () => {
           Filters
         </button>
 
-        <div className={`flex-col gap-4 text-sm text-gray-600 ${showFilter ? 'flex' : 'hidden sm:flex'}`}>
+        <div className={`flex-col gap-4 text-sm font-medium text-gray-700 ${showFilter ? 'flex' : 'hidden sm:flex'}`}>
           {specialities.map((spec) => (
             <p
               key={spec}
@@ -62,7 +53,7 @@ const Doctors = () => {
 
         <div className='w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 gap-y-6'>
           {filterDoc.length === 0 && (
-            <p className='text-gray-500 text-sm col-span-full'>No doctors found for this speciality.</p>
+            <p className='text-gray-600 text-sm font-medium col-span-full'>No doctors found for this speciality.</p>
           )}
           {filterDoc.map((item) => (
             <div
@@ -78,7 +69,7 @@ const Doctors = () => {
                   <span className='w-1.5 h-1.5 bg-green-500 rounded-full'></span>
                   <span>Available</span>
                 </div>
-                <p className='text-sm font-medium text-gray-900'>{item.name}</p>
+                <p className='text-sm font-semibold text-gray-900'>{item.name}</p>
                 <p className='text-sm text-gray-600 mt-1'>{item.speciality}</p>
               </div>
             </div>

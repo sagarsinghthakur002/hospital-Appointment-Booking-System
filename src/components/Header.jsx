@@ -1,4 +1,3 @@
-import React from "react";
 import { assets } from "../assets/assets.js";
 
 const Header = () => {
@@ -22,7 +21,7 @@ const Header = () => {
                         alt="Doctors"
                     />
 
-                    <p className="text-white text-xs md:text-sm font-light leading-5">
+                    <p className="text-white text-sm md:text-base font-medium leading-6">
                         Simply browse through our extensive list of trusted doctors,
                         <br className="hidden md:block" />
                         select your preferred doctor, and schedule your appointment hassle-free.
