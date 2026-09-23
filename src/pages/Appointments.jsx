@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
 import { assets } from '../assets/assets'
 import RelatedDoctors from '../components/RelatedDoctors'
+import { filterAvailableSlots } from '../utils/slotConflict'
 
 const daysOfWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
 
@@ -10,7 +11,7 @@ const Appointments = () => {
 
   const { docId } = useParams()
   const navigate = useNavigate()
-  const { doctors, currencySymbol, token, bookAppointment } = useContext(AppContext)
+  const { doctors, appointments, currencySymbol, token, bookAppointment } = useContext(AppContext)
 
   const docInfo = useMemo(() => doctors.find((doc) => doc._id === docId) || null, [doctors, docId])
 
@@ -48,11 +49,13 @@ const Appointments = () => {
         currentDate.setMinutes(currentDate.getMinutes() + 30)
       }
 
-      allSlots.push(timeSlots)
+      // ALGORITHM 3 — strip out any slot this doctor is already booked
+      // for, so two patients can never grab the same appointment.
+      allSlots.push(filterAvailableSlots(timeSlots, appointments, docId))
     }
 
     return allSlots
-  }, [docInfo])
+  }, [docInfo, appointments, docId])
 
   const handleBooking = () => {
     if (!token) {
@@ -64,8 +67,12 @@ const Appointments = () => {
     const date = docSlots[slotIndex][0].datetime
     const slotDate = `${date.getDate()}_${date.getMonth() + 1}_${date.getFullYear()}`
 
-    bookAppointment(docId, slotDate, slotTime)
-    navigate('/my-appointments')
+    const success = bookAppointment(docId, slotDate, slotTime)
+    if (success) {
+      navigate('/my-appointments')
+    } else {
+      setSlotTime('')
+    }
   }
 
   const feeLabel = useMemo(() => (docInfo ? `${currencySymbol}${docInfo.fees}` : ''), [docInfo, currencySymbol])

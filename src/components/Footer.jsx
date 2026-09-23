@@ -1,4 +1,5 @@
 import { assets } from '../assets/assets'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
     return (
@@ -74,10 +75,13 @@ const Footer = () => {
 
 
                 {/* Copyright */}
-                <div className='border-t border-gray-300 py-6 text-center'>
+                <div className='border-t border-gray-300 py-6 text-center flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4'>
                     <p className='text-sm font-medium text-gray-700'>
-                        Copyright © {new Date().getFullYear()} M & S - All Right Reserved.
+                        Copyright © {new Date().getFullYear()} M$S - All Right Reserved.
                     </p>
+                    <Link to='/admin/login' className='text-xs text-gray-400 hover:text-primary underline'>
+                        Admin Panel
+                    </Link>
                 </div>
 
             </div>

@@ -10,14 +10,12 @@ const slotDateFormat = (slotDate) => {
 
 const MyAppointments = () => {
 
-    const { appointments, doctors, cancelAppointment, payAppointment } = useContext(AppContext)
+    const { doctors, cancelAppointment, payAppointment, priorityAppointments } = useContext(AppContext)
 
     const getDoctor = (docId) => doctors.find((doc) => doc._id === docId)
 
-    // emergency requests always float to the top, newest first within each group
-    const visibleAppointments = appointments
-        .filter((item) => !item.cancelled)
-        .sort((a, b) => (b.emergency === true) - (a.emergency === true))
+    // ALGORITHM 1 — priority-queue ordering: emergency requests first.
+    const visibleAppointments = priorityAppointments.filter((item) => !item.cancelled)
 
     return (
         <div>

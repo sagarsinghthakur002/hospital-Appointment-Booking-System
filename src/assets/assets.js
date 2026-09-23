@@ -16,6 +16,18 @@ import upload_icon from './upload_icon.png'
 import stripe_logo from './stripe_logo.png'
 import razorpay_logo from './razorpay_logo.png'
 import upload_area from './upload_area.png'
+import doctor_icon from './doctor_icon.svg'
+import appointment_icon from './appointment_icon.svg'
+import appointments_icon from './appointments_icon.svg'
+import add_icon from './add_icon.svg'
+import cancel_icon from './cancel_icon.svg'
+import home_icon from './home_icon.svg'
+import list_icon from './list_icon.svg'
+import patient_icon from './patient_icon.svg'
+import patients_icon from './patients_icon.svg'
+import people_icon from './people_icon.svg'
+import earning_icon from './earning_icon.svg'
+import admin_logo from './admin_logo.svg'
 import doc1 from './doc1.png'
 import doc2 from './doc2.png'
 import doc3 from './doc3.png'
@@ -59,7 +71,19 @@ export const assets = {
     razorpay_logo,
     upload_area,
     group: group_profiles,
-    about_icon: info_icon
+    about_icon: info_icon,
+    doctor_icon,
+    appointment_icon,
+    appointments_icon,
+    add_icon,
+    cancel_icon,
+    home_icon,
+    list_icon,
+    patient_icon,
+    patients_icon,
+    people_icon,
+    earning_icon,
+    admin_logo
 }
 
 export const specialityData = [
